@@ -4,11 +4,23 @@ import TP.menu.Menu;
 
 import static TP.utils.utils.getDoubleInput;
 
+/**
+ * The type Tp 1 2.
+ */
 public class TP1_2 {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         calc();
     }
+
+    /**
+     * Calc.
+     */
     public static void calc() {
 
         // creating the menu to choose the operation.

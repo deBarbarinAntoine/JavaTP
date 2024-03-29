@@ -2,13 +2,15 @@ package TP.utils;
 
 import java.util.Scanner;
 
+/**
+ * The type Utils.
+ */
 public class utils {
 
     /**
-     * getFloatInput takes a message and a scanner to return a float.
+     * getFloatInput takes a message to return a float.
      *
-     * @param msg   the message to display before taking the user's input.
-     * @param input the scanner you want to use.
+     * @param msg the message to display before taking the user's input.
      * @return float found in the scanner.
      */
     public static double getDoubleInput(String msg) {
@@ -41,9 +43,9 @@ public class utils {
     }
 
     /**
-     * getIntInput takes a message and a scanner to return an int.
+     * getIntInput takes a message to return an int.
+     *
      * @param msg the message to display before taking the user's input.
-     * @param input the scanner you want to use.
      * @return int found in the scanner.
      */
     public static int getIntInput(String msg) {

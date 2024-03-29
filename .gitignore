@@ -1,3 +1,6 @@
+### Documentation ###
+doc/
+
 ### IntelliJ IDEA ###
 .idea/
 out/

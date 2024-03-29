@@ -1,5 +1,8 @@
 package TP.TP1.geometry;
 
+/**
+ * The type Shape.
+ */
 abstract public class shape implements polygon {
 
     @Override
@@ -12,7 +15,13 @@ abstract public class shape implements polygon {
        System.out.println("The area of the shape is "+area + " m2");
    }
 
-   public static polygon NewPolygon(@org.jetbrains.annotations.NotNull type newShape) {
+    /**
+     * New polygon polygon.
+     *
+     * @param newShape the new shape
+     * @return the polygon
+     */
+    public static polygon NewPolygon(type newShape) {
         return switch (newShape) {
             case circle -> new circle();
             case fourthCircle -> new fourthCircle();

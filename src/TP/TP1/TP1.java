@@ -9,12 +9,17 @@ import TP.TP;
 import TP.menu.Menu;
 
 /**
+ * The type Tp 1.
+ *
  * @author Antoine de Barbarin
  * @version 1.0
  * @since 25/03/2024
  */
 public class TP1 implements TP {
 
+    /**
+     * Instantiates a new Tp 1.
+     */
     protected TP1() {}
 
     @Override
@@ -44,6 +49,11 @@ public class TP1 implements TP {
         }
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         TP1 tp = new TP1();
         tp.execute();

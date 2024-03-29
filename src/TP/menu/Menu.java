@@ -1,14 +1,34 @@
 package TP.menu;
 
+/**
+ * The type Menu.
+ */
 public class Menu {
+    /**
+     * The title.
+     */
     String m_title;
+    /**
+     * The options.
+     */
     String[] m_options;
 
+    /**
+     * Instantiates a new Menu.
+     *
+     * @param title   the title
+     * @param options the options
+     */
     public Menu(String title, String[] options) {
         m_title = title;
         m_options = options;
     }
 
+    /**
+     * Displays the menu and takes the user's input.
+     *
+     * @return the user's choice.
+     */
     public int display() {
 
         System.out.println(m_title);

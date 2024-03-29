@@ -4,11 +4,23 @@ import java.util.Scanner;
 
 import static TP.utils.utils.*;
 
+/**
+ * The type Tp 1 1.
+ */
 public class TP1_1 {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         inputAndLoop();
     }
+
+    /**
+     * Input and loop.
+     */
     public static void inputAndLoop() {
 
         // creating the Scanner taking the System input.
