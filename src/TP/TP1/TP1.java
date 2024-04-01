@@ -20,7 +20,7 @@ public class TP1 implements TP {
     /**
      * Instantiates a new Tp 1.
      */
-    protected TP1() {}
+    public TP1() {}
 
     @Override
     public void execute() {
