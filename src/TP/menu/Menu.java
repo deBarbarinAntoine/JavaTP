@@ -7,11 +7,11 @@ public class Menu {
     /**
      * The title.
      */
-    String m_title;
+    private String m_title;
     /**
      * The options.
      */
-    String[] m_options;
+    private String[] m_options;
 
     /**
      * Instantiates a new Menu.

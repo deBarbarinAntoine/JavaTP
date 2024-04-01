@@ -1,14 +1,25 @@
 package TP.TP_2;
 
+import TP.TP;
+
 /**
  * The type Tp 2.
  */
-public class TP2 {
+public class TP2 implements TP {
 
     /**
      * The constant goldenRatio.
      */
     protected static final double goldenRatio = (1 + Math.sqrt(5)) / 2;
+
+    protected TP2() {}
+
+    @Override
+    public void execute() {
+        primeTest();
+        getFibonacci();
+        getGoldenRatio();
+    }
 
     /**
      * The entry point of application.
@@ -16,9 +27,8 @@ public class TP2 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        primeTest();
-        getFibonacci();
-        getGoldenRatio();
+        TP2 tp = new TP2();
+        tp.execute();
     }
 
     /**
