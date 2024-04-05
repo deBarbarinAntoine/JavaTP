@@ -8,7 +8,7 @@ public class TP2_6 {
     }
 
     private static void matchesGame() {
-        System.out.println("matches");
         Game game = new Game();
+        game.play();
     }
 }
