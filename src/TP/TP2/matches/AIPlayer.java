@@ -20,7 +20,12 @@ public class AIPlayer implements Player {
     }
 
     @Override
-    public String getM_name() {
+    public String getName() {
         return m_name;
+    }
+
+    @Override
+    public type getType() {
+        return type.Computer;
     }
 }
