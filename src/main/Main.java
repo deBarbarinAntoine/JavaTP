@@ -1,10 +1,18 @@
 package main;
 
-import TP.TP1.TP1;
+import TP.TP2.TP2;
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
-        TP1 tp1 = new TP1();
-        tp1.execute();
+        TP2 tp2 = new TP2();
+        tp2.execute();
     }
 }

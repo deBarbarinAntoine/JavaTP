@@ -2,19 +2,29 @@ package TP.TP2;
 
 import static TP.utils.utils.getIntInput;
 
+/**
+ * The type Tp 2 2.
+ */
 public class TP2_2 {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         getFibonacci();
     }
 
     /**
-     * Fibonacci int.
+     * Fibonacci suite (recursive function).
      *
-     * @param num the num
-     * @return the int
+     * @param num the integer
+     * @return the result
      */
     public static int fibonacci(int num) {
+
+        // check if num is positive (error handling)
         if (num < 0) {
             return -1;
         }
@@ -31,9 +41,13 @@ public class TP2_2 {
      * Gets fibonacci.
      */
     public static void getFibonacci() {
-        int num = getIntInput("Enter a positive integer:");
-        if (num < 0) return;
-        int result = fibonacci(num);
-        System.out.println("Fibonacci de "+num+" est: "+result);
+        int num;
+        do {
+            // takes the user's input
+            num = getIntInput("Enter a positive integer:");
+        } while (num < 0);
+
+        // printing the result
+        System.out.println("Fibonacci de "+num+" est: " + fibonacci(num));
     }
 }
