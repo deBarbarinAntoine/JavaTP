@@ -1,6 +1,7 @@
 package main;
 
 import TP.TP2.TP2;
+import TP.TP;
 
 /**
  * The type Main.
@@ -12,7 +13,7 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        TP2 tp2 = new TP2();
-        tp2.execute();
+        TP tp = new TP2();
+        tp.execute();
     }
 }
