@@ -63,7 +63,7 @@ public class TP2 implements TP {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        TP2 tp = new TP2();
+        TP tp = new TP2();
         tp.execute();
     }
 }

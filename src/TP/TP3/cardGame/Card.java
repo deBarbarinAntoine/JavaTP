@@ -1,4 +1,4 @@
-package TP.TP3;
+package TP.TP3.cardGame;
 
 import java.util.ArrayList;
 
@@ -142,7 +142,7 @@ public class Card {
     /**
      * Used to copy a card
      *
-     * @param card  : the card to copy
+     * @param card : the card to copy
      * @return the duplicated card
      */
     public static Card copyCard(Card card) {

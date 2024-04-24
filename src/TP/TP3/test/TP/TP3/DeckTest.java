@@ -1,10 +1,18 @@
 package TP.TP3;
 
+import TP.TP3.cardGame.Card;
+import TP.TP3.cardGame.Deck;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Deck test.
+ */
 class DeckTest {
 
+    /**
+     * New deck.
+     */
     @Test
     void newDeck() {
         Deck deck = Deck.newDeck();
@@ -12,6 +20,9 @@ class DeckTest {
         Assertions.assertEquals(deck.getCards().size(), 54);
     }
 
+    /**
+     * Shuffle.
+     */
     @Test
     void shuffle() {
         Deck deck = Deck.newDeck();
@@ -25,6 +36,9 @@ class DeckTest {
         Assertions.assertFalse(equals);
     }
 
+    /**
+     * Draw.
+     */
     @Test
     void draw() {
         Deck deck = Deck.newDeck();
@@ -34,6 +48,9 @@ class DeckTest {
         Assertions.assertTrue(drawnCard.equal(card));
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     void testToString() {
         Deck deck = Deck.newDeck();

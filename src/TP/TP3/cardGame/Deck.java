@@ -1,4 +1,4 @@
-package TP.TP3;
+package TP.TP3.cardGame;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,9 +63,12 @@ public class Deck {
     public static void main(String[] args) {
         Deck deck = newDeck();
         deck.shuffle();
-        System.out.println("Drawing the last card of the deck: ");
-        System.out.println(deck.draw());
-        System.out.println("\n\n\n");
+        for (int i = 0; i < 7; ++i) {
+            System.out.println("Drawing the last card of the deck: ");
+            System.out.println(deck.draw());
+            System.out.printf("The deck has now %d cards\n", deck.getCards().size());
+            System.out.println("\n\n\n");
+        }
         System.out.println(deck);
     }
 
@@ -97,6 +100,9 @@ public class Deck {
         return output.toString();
     }
 
+    /**
+     * The enum Card values.
+     */
     enum cardValues {
         /**
          * Ace card value.
@@ -165,6 +171,8 @@ public class Deck {
         }
 
         /**
+         * Label to value string.
+         *
          * @param label : a card's value
          * @return the corresponding card value like in the enum.
          */

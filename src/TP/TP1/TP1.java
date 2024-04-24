@@ -55,7 +55,7 @@ public class TP1 implements TP {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        TP1 tp = new TP1();
+        TP tp = new TP1();
         tp.execute();
     }
 }
