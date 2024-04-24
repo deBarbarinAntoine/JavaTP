@@ -86,7 +86,7 @@ public class Deck {
                             output.append(" ");
                             continue;
                         }
-                        output.append(card.toString().split("\n")[y].charAt(x));
+                        if (card != null) output.append(card.toString().split("\n")[y].charAt(x));
                     }
                     output.append("  ");
                 }
