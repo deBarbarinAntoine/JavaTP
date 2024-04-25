@@ -1,0 +1,57 @@
+[
+  {
+    "valeur": 0.25,
+    "devise_valeur": "USD",
+    "filet": true,
+    "dentelure": "14",
+    "pays_orig": "USA",
+    "oeuvre": "Liberty Bell",
+    "designation": "Forever Stamp",
+    "signature_dessinateur": "C. Saxon",
+    "signature_graveur": "Thomas Hiatt"
+  },
+  {
+    "valeur": 1.15,
+    "devise_valeur": "EUR",
+    "filet": false,
+    "dentelure": "13 ¼",
+    "pays_orig": "France",
+    "oeuvre": "Marianne",
+    "designation": "Marianne Definitif",
+    "signature_dessinateur": "Olivier Ciappa",
+    "signature_graveur": "Elsa Michelet"
+  },
+  {
+    "valeur": 8.00,
+    "devise_valeur": "JPY",
+    "filet": true,
+    "dentelure": "11",
+    "pays_orig": "Japon",
+    "oeuvre": "Mont Fuji",
+    "designation": "Série paysages",
+    "signature_dessinateur": "Katsushiro Kobayashi",
+    "signature_graveur": "Ryoichi Mori"
+  },
+  {
+    "valeur": 0.70,
+    "devise_valeur": "GBP",
+    "filet": false,
+    "dentelure": "14 ½",
+    "pays_orig": "Royaume-Uni",
+    "oeuvre": "Elizabeth II",
+    "designation": "Second Class",
+    "signature_dessinateur": "Arnold Machin",
+    "signature_graveur": "Timothy Bradbury"
+  },
+  {
+    "valeur": 3.00,
+    "devise_valeur": "AUD",
+    "filet": true,
+    "dentelure": "12 ¾",
+    "pays_orig": "Australie",
+    "oeuvre": "Koala",
+    "designation": "Commemoratif 2023",
+    "signature_dessinateur": "Stuart Devlin",
+    "signature_graveur": "Horst Friedrich"
+  }
+]

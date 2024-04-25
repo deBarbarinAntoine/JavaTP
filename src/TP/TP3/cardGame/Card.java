@@ -149,7 +149,17 @@ public class Card {
         return newCard(card.getValue(), card.getColor());
     }
 
-    private static Color strToColor(String colorStr) {
+    /**
+     * Used to assign a specific card's value to a card
+     *
+     * @param card: the card holding the values you want in your card.
+     */
+    public void assign(Card card) {
+        m_value = card.getValue();
+        m_color = strToColor(card.getColor());
+    }
+
+    static Color strToColor(String colorStr) {
         return switch (colorStr.toUpperCase().trim()) {
             case "DIAMONDS" -> Color.valueOf("DIAMONDS");
             case "HEARTS" -> Color.valueOf("HEARTS");

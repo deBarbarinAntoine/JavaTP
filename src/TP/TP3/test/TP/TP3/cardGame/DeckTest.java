@@ -1,7 +1,5 @@
-package TP.TP3;
+package TP.TP3.cardGame;
 
-import TP.TP3.cardGame.Card;
-import TP.TP3.cardGame.Deck;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +15,7 @@ class DeckTest {
     void newDeck() {
         Deck deck = Deck.newDeck();
         Assertions.assertNotNull(deck);
-        Assertions.assertEquals(deck.getCards().size(), 54);
+        Assertions.assertEquals(54, deck.getCards().size());
     }
 
     /**
@@ -46,6 +44,7 @@ class DeckTest {
         Card card = Card.newCard("JOKER", "CLUBS");
         Assertions.assertNotNull(drawnCard);
         Assertions.assertTrue(drawnCard.equal(card));
+        Assertions.assertEquals(53, deck.getCards().size());
     }
 
     /**
@@ -110,6 +109,6 @@ class DeckTest {
                 |  |  |  |  |  |  |  |  |  |  |  |  |   E |  |   E | \s
                 |___10|  |____J|  |____Q|  |____K|  |*___R|  |*___R| \s
                 """;
-        Assertions.assertEquals(deck.toString(), expected);
+        Assertions.assertEquals(expected, deck.toString());
     }
 }

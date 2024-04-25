@@ -1,8 +1,9 @@
-package TP.TP3;
+package TP.TP3.cardGame;
 
-import TP.TP3.cardGame.Card;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
 
 /**
  * The type Card test.
@@ -28,6 +29,27 @@ class CardTest {
             card.setValue("10");
         }
         Assertions.assertEquals("10", card.getValue());
+    }
+
+    @Test
+    void strToColor() {
+        HashMap<String, Card.Color> colorTest = new HashMap<>();
+        colorTest.put("ClUbs", Card.Color.CLUBS);
+        colorTest.put("DiAmonDs", Card.Color.DIAMONDS);
+        colorTest.put("SpaDes", Card.Color.SPADES);
+        colorTest.put("hEaRtS", Card.Color.HEARTS);
+
+        colorTest.forEach((k, v) -> {
+            Assertions.assertEquals(v, Card.strToColor(k));
+            k = "   " + k + "     ";
+            Assertions.assertEquals(v, Card.strToColor(k));
+            k = k.trim().toUpperCase();
+            Assertions.assertEquals(v, Card.strToColor(k));
+            k = k.toLowerCase();
+            Assertions.assertEquals(v, Card.strToColor(k));
+            k = k + "s";
+            Assertions.assertNotEquals(v, Card.strToColor(k));
+        });
     }
 
     /**
@@ -79,6 +101,21 @@ class CardTest {
         Assertions.assertNotNull(card2);
         Assertions.assertEquals(card.getColor(), card2.getColor());
         Assertions.assertEquals(card.getValue(), card2.getValue());
+        Assertions.assertNotEquals(card, card2);
+    }
+
+    /**
+     * Assign a card's value to another.
+     */
+    @Test
+    void assign() {
+        Card card = Card.newCard("J", "CLUBS");
+        Card card2 = Card.newCard("3", "DIAMONDS");
+        card.assign(card2);
+        Assertions.assertNotNull(card);
+        Assertions.assertEquals(card.getColor(), card2.getColor());
+        Assertions.assertEquals(card.getValue(), card2.getValue());
+        Assertions.assertNotEquals(card, card2);
     }
 
     /**
