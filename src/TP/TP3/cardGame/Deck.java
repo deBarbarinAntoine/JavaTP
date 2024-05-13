@@ -1,13 +1,11 @@
 package TP.TP3.cardGame;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumSet;
+import java.util.*;
 
 /**
  * The type Deck.
  */
-public class Deck {
+public class Deck implements Iterable<Card> {
     private ArrayList<Card> cards = new ArrayList<>();
 
     private Deck() {
@@ -38,11 +36,19 @@ public class Deck {
     }
 
     /**
+     * Checks if the deck is empty.
+     *
+     * @return isEmpty
+     */
+    public boolean isEmpty() {return this.cards.isEmpty();}
+
+    /**
      * Draw the last card of the Deck (removing it).
      *
      * @return the last card
      */
     public Card draw() {
+        if (this.isEmpty()) return null;
         return this.cards.remove(this.getCards().size()-1);
     }
 
@@ -98,6 +104,38 @@ public class Deck {
         }
 
         return output.toString();
+    }
+
+    @Override
+    public Iterator<Card> iterator() {
+        return new DeckIterator(cards);
+    }
+
+    /**
+     * Implementing Iterable
+     */
+    private class DeckIterator implements Iterator<Card> {
+
+        private final ArrayList<Card> cards;
+        private int currentIndex = 0;
+
+        public DeckIterator(ArrayList<Card> cards) {
+            this.cards = cards;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < cards.size();
+        }
+
+        @Override
+        public Card next() {
+            if (hasNext()) {
+                return cards.get(currentIndex++);
+            } else {
+                throw new NoSuchElementException("No more cards in the deck");
+            }
+        }
     }
 
     /**

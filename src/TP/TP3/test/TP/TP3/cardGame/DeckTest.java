@@ -3,6 +3,8 @@ package TP.TP3.cardGame;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 /**
  * The type Deck test.
  */
@@ -14,8 +16,53 @@ class DeckTest {
     @Test
     void newDeck() {
         Deck deck = Deck.newDeck();
+
         Assertions.assertNotNull(deck);
         Assertions.assertEquals(54, deck.getCards().size());
+
+        HashSet<Card> Hearts = new HashSet<>();
+        HashSet<Card> Diamonds = new HashSet<>();
+        HashSet<Card> Spades = new HashSet<>();
+        HashSet<Card> Clubs = new HashSet<>();
+        HashSet<Card> Jokers = new HashSet<>();
+
+        for (Card card: deck) {
+            if (card.getValue().equals("JOKER")) {
+                Jokers.add(card);
+                continue;
+            }
+            switch (card.getColor()) {
+                case "HEARTS":
+                    Hearts.add(card);
+                    break;
+                case "DIAMONDS":
+                    Diamonds.add(card);
+                    break;
+                case "CLUBS":
+                    Clubs.add(card);
+                    break;
+                case "SPADES":
+                    Spades.add(card);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected card color");
+            }
+        }
+        
+        Assertions.assertNotNull(Hearts);
+        Assertions.assertEquals(13, Hearts.size());
+
+        Assertions.assertNotNull(Diamonds);
+        Assertions.assertEquals(13, Diamonds.size());
+
+        Assertions.assertNotNull(Clubs);
+        Assertions.assertEquals(13, Clubs.size());
+
+        Assertions.assertNotNull(Spades);
+        Assertions.assertEquals(13, Spades.size());
+
+        Assertions.assertNotNull(Jokers);
+        Assertions.assertEquals(2, Jokers.size());
     }
 
     /**
@@ -27,11 +74,26 @@ class DeckTest {
         Deck shuffledDeck = Deck.newDeck();
         shuffledDeck.shuffle();
         boolean equals = true;
-        for (int i = 0; i < deck.getCards().size(); i++) {
+        for (int i = 0; i < deck.getCards().size(); ++i) {
             equals = deck.getCards().get(i).equal(shuffledDeck.getCards().get(i));
             if (!equals) break;
         }
         Assertions.assertFalse(equals);
+    }
+
+    /**
+     * isEmpty.
+     */
+    @Test
+    void isEmpty() {
+        Deck deck = Deck.newDeck();
+
+        for (int i = 0; i < 54; ++i) {
+            Assertions.assertFalse(deck.isEmpty());
+            deck.draw();
+        }
+
+        Assertions.assertTrue(deck.isEmpty());
     }
 
     /**
@@ -45,6 +107,12 @@ class DeckTest {
         Assertions.assertNotNull(drawnCard);
         Assertions.assertTrue(drawnCard.equal(card));
         Assertions.assertEquals(53, deck.getCards().size());
+
+        for (int i = 0; i < 53; ++i) {
+            deck.draw();
+        }
+
+        Assertions.assertEquals(deck.isEmpty(), deck.draw());
     }
 
     /**
