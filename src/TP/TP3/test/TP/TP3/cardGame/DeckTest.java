@@ -112,7 +112,8 @@ class DeckTest {
             deck.draw();
         }
 
-        Assertions.assertEquals(deck.isEmpty(), deck.draw());
+        Assertions.assertTrue(deck.isEmpty());
+        Assertions.assertNull(deck.draw());
     }
 
     /**

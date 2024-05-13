@@ -1,9 +1,16 @@
 package TP.utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -81,35 +88,95 @@ public class utils {
         return number;
     }
 
-    private static boolean existsFile(String filename) {
-        File file = new File(filename);
-        return file.exists();
-    }
-
     private static void checkFile(String filename) throws IOException {
-        if (!existsFile(filename)) {
-            File file = new File(filename);
+        File file = new File(filename);
+        if (!file.exists()) {
             file.createNewFile();
         }
     }
 
-    public static void writeJSONFile(String filename, ObjectNode jsonObj, boolean append) throws IOException {
-        checkFile(filename);
+    public static void writeFile(String filename, String jsonString, boolean append) {
         try (Writer w = new FileWriter(filename, append)) {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(w, jsonObj);
+            checkFile(filename);
+            w.write(jsonString);
         } catch (IOException exception) {
             System.out.println("An error occurred: \n" + exception);
         }
     }
 
-    public static ObjectNode readJSONFile(String filename) throws IOException {
+    @Nullable
+    public static ObjectNode readJSONFile(String filename) {
         try (Reader r = new FileReader(filename)) {
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(r, ObjectNode.class);
-        } catch (FileNotFoundException exception) {
+        } catch (IOException exception) {
             System.out.println("File " + filename + " doesn't exist");
             return null;
         }
+    }
+
+    @Nullable
+    public static ArrayNode readJSONArrayFile(String filename) {
+        try (Reader r = new FileReader(filename)) {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(r, ArrayNode.class);
+        } catch (IOException exception) {
+            System.out.println("File " + filename + " doesn't exist");
+            return null;
+        }
+    }
+
+    public static String jsonStringify(ObjectNode jsonObj) {
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonStringify;
+        try {
+            jsonStringify = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObj);
+        } catch (JsonProcessingException exception) {
+            System.out.println("An error occurred: \n" + exception);
+            return "";
+        }
+        return jsonStringify;
+    }
+
+    public static String jsonStringify(ArrayNode jsonObj) {
+        if (jsonObj == null || jsonObj.isEmpty()) return "[]";
+        StringBuilder jsonStringify = new StringBuilder("[\n");
+        int i = 0;
+        for (JsonNode obj: jsonObj) {
+            jsonStringify.append(obj.toPrettyString());
+            if (i + 1 < jsonObj.size()) jsonStringify.append(",\n");
+            ++i;
+        }
+        jsonStringify.append("\n]");
+        return jsonStringify.toString();
+    }
+
+    public static ArrayNode toJsonArray(ArrayList<ObjectNode> items) {
+        ObjectMapper mapper = new ObjectMapper();
+        StringBuilder sg = new StringBuilder("[\n");
+        int i = 0;
+        for (ObjectNode item : items) {
+            sg.append(jsonStringify(item));
+            if (i + 1 < items.size()) sg.append(",\n");
+            ++i;
+        }
+        sg.append("\n]");
+        ArrayNode jsonArray;
+        try {
+            jsonArray = mapper.readValue(sg.toString(), ArrayNode.class);
+        } catch (JsonProcessingException exception) {
+            System.out.println("An error occurred: \n" + exception);
+            return null;
+        }
+        return jsonArray;
+    }
+
+    public static <T> ArrayNode toJson(ArrayList<T> arr) {
+        ObjectMapper mapper = new ObjectMapper();
+        ArrayNode jsonArray = new ArrayNode(JsonNodeFactory.instance);
+        for (T obj : arr) {
+            jsonArray.add(mapper.valueToTree(obj));
+        }
+        return jsonArray;
     }
 }
