@@ -48,7 +48,7 @@ class DeckTest {
                     throw new IllegalStateException("Unexpected card color");
             }
         }
-        
+
         Assertions.assertNotNull(Hearts);
         Assertions.assertEquals(13, Hearts.size());
 

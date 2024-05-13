@@ -1,5 +1,9 @@
 package TP.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -75,5 +79,37 @@ public class utils {
         } while (!validInput);
 
         return number;
+    }
+
+    private static boolean existsFile(String filename) {
+        File file = new File(filename);
+        return file.exists();
+    }
+
+    private static void checkFile(String filename) throws IOException {
+        if (!existsFile(filename)) {
+            File file = new File(filename);
+            file.createNewFile();
+        }
+    }
+
+    public static void writeJSONFile(String filename, ObjectNode jsonObj, boolean append) throws IOException {
+        checkFile(filename);
+        try (Writer w = new FileWriter(filename, append)) {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(w, jsonObj);
+        } catch (IOException exception) {
+            System.out.println("An error occurred: \n" + exception);
+        }
+    }
+
+    public static ObjectNode readJSONFile(String filename) throws IOException {
+        try (Reader r = new FileReader(filename)) {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(r, ObjectNode.class);
+        } catch (FileNotFoundException exception) {
+            System.out.println("File " + filename + " doesn't exist");
+            return null;
+        }
     }
 }
