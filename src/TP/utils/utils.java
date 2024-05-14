@@ -1,7 +1,9 @@
 package TP.utils;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -9,7 +11,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -95,6 +96,13 @@ public class utils {
         }
     }
 
+    /**
+     * Write a jsonString into a file.
+     *
+     * @param filename   the file's name
+     * @param jsonString the json string
+     * @param append     whether to append the writing content or not
+     */
     public static void writeFile(String filename, String jsonString, boolean append) {
         try (Writer w = new FileWriter(filename, append)) {
             checkFile(filename);
@@ -104,6 +112,12 @@ public class utils {
         }
     }
 
+    /**
+     * Read json file to retrieve an ObjectNode.
+     *
+     * @param filename the file's name
+     * @return the ObjectNode
+     */
     @Nullable
     public static ObjectNode readJSONFile(String filename) {
         try (Reader r = new FileReader(filename)) {
@@ -115,6 +129,12 @@ public class utils {
         }
     }
 
+    /**
+     * Read json file to retrieve an ArrayNode.
+     *
+     * @param filename the file's name
+     * @return the ArrayNode
+     */
     @Nullable
     public static ArrayNode readJSONArrayFile(String filename) {
         try (Reader r = new FileReader(filename)) {
@@ -126,6 +146,12 @@ public class utils {
         }
     }
 
+    /**
+     * Convert JSON ObjectNode to a String.
+     *
+     * @param jsonObj the json object
+     * @return the string
+     */
     public static String jsonStringify(ObjectNode jsonObj) {
         ObjectMapper mapper = new ObjectMapper();
         String jsonStringify;
@@ -138,6 +164,12 @@ public class utils {
         return jsonStringify;
     }
 
+    /**
+     * Convert JSON ArrayNode to a String.
+     *
+     * @param jsonObj the json object
+     * @return the string
+     */
     public static String jsonStringify(ArrayNode jsonObj) {
         if (jsonObj == null || jsonObj.isEmpty()) return "[]";
         StringBuilder jsonStringify = new StringBuilder("[\n");
@@ -151,6 +183,12 @@ public class utils {
         return jsonStringify.toString();
     }
 
+    /**
+     * Convert an array of JSON ObjectNode to an ArrayNode.
+     *
+     * @param items the JSON items
+     * @return the ArrayNode
+     */
     public static ArrayNode toJsonArray(ArrayList<ObjectNode> items) {
         ObjectMapper mapper = new ObjectMapper();
         StringBuilder sg = new StringBuilder("[\n");
@@ -171,6 +209,13 @@ public class utils {
         return jsonArray;
     }
 
+    /**
+     * Convert a list of objects to a JSON ArrayNode.
+     *
+     * @param <T> the type parameter
+     * @param arr the arr
+     * @return the ArrayNode
+     */
     public static <T> ArrayNode toJson(ArrayList<T> arr) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode jsonArray = new ArrayNode(JsonNodeFactory.instance);

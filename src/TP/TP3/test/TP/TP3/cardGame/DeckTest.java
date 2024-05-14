@@ -180,4 +180,9 @@ class DeckTest {
                 """;
         Assertions.assertEquals(expected, deck.toString());
     }
+
+    @Test
+    void testClone() {
+        
+    }
 }

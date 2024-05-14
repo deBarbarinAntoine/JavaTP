@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * The type Deck.
  */
-public class Deck implements Iterable<Card> {
+public class Deck implements Iterable<Card>, Cloneable {
     private ArrayList<Card> cards = new ArrayList<>();
 
     private Deck() {
@@ -133,6 +133,15 @@ public class Deck implements Iterable<Card> {
                 throw new UnsupportedOperationException();
             }
         };
+    }
+
+    @Override
+    public Deck clone() {
+        try {
+            return (Deck) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     /**

@@ -1,4 +1,4 @@
-package TP.TP3;
+package TP.TP3.stamps;
 
 import TP.utils.utils;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,8 +9,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Timbre {
+/**
+ * The stamp type (Timbre).
+ */
+public class Timbre implements Cloneable {
     @JsonProperty("valeur")
     private Float m_valeur;
 
@@ -38,7 +42,7 @@ public class Timbre {
     @JsonProperty("signature_graveur")
     private String m_signatureGraveur;
 
-    private Timbre(float valeur, String deviseValeur, boolean filet, String dentelure, String paysOrig, String oeuvre, String designation, String signatureDessinateur, String signatureGraveur) {
+    Timbre(float valeur, String deviseValeur, boolean filet, String dentelure, String paysOrig, String oeuvre, String designation, String signatureDessinateur, String signatureGraveur) {
         m_valeur = valeur;
         m_deviseValeur = deviseValeur;
         m_filet = filet;
@@ -52,13 +56,24 @@ public class Timbre {
 
     private Timbre() {}
 
-    public static Timbre newTimbre() {
-        return new Timbre(5.0f, "Fr", true, "Crénelé", "France", "img/gravure-mont-saint-michel.png", "Mont Saint Michel", "F. Bivel", "A. Mignon");
+    /**
+     * A simple stamp factory (Timbre) from a JSON file (containing a single stamp).
+     *
+     * @param filename the file's name
+     * @return the stamp (Timbre)
+     */
+    public static Timbre newTimbre(String filename) {
+        return Timbre.fromJson(utils.readJSONFile("stamp.json"));
     }
 
+    /**
+     * The class' entry point (to run an example of the stamp class).
+     *
+     * @param args the args
+     */
     public static void main(String[] args){
 
-        Timbre timbreTest = newTimbre();
+        Timbre timbreTest = newTimbre("stamp.json");
         utils.writeFile("test.json", utils.jsonStringify(timbreTest.toJson()), false);
 
         ObjectNode obj = utils.readJSONFile("test.json");
@@ -104,42 +119,92 @@ public class Timbre {
         utils.writeFile("test.json", utils.jsonStringify(objArray), false);
     }
 
+    /**
+     * Gets filet.
+     *
+     * @return the filet
+     */
     public Boolean getFilet() {
         return m_filet;
     }
 
+    /**
+     * Gets valeur.
+     *
+     * @return the valeur
+     */
     public Float getValeur() {
         return m_valeur;
     }
 
+    /**
+     * Gets dentelure.
+     *
+     * @return the dentelure
+     */
     public String getDentelure() {
         return m_dentelure;
     }
 
+    /**
+     * Gets designation.
+     *
+     * @return the designation
+     */
     public String getDesignation() {
         return m_designation;
     }
 
+    /**
+     * Gets devise valeur.
+     *
+     * @return the devise valeur
+     */
     public String getDeviseValeur() {
         return m_deviseValeur;
     }
 
+    /**
+     * Gets œuvre.
+     *
+     * @return the oeuvre
+     */
     public String getOeuvre() {
         return m_oeuvre;
     }
 
+    /**
+     * Gets pays orig.
+     *
+     * @return the pays orig
+     */
     public String getPaysOrig() {
         return m_paysOrig;
     }
 
+    /**
+     * Gets signature dessinateur.
+     *
+     * @return the signature dessinateur
+     */
     public String getSignatureDessinateur() {
         return m_signatureDessinateur;
     }
 
+    /**
+     * Gets signature graveur.
+     *
+     * @return the signature graveur
+     */
     public String getSignatureGraveur() {
         return m_signatureGraveur;
     }
 
+    /**
+     * Convert to JSON ObjectNode.
+     *
+     * @return the object node
+     */
     public ObjectNode toJson() {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -157,6 +222,12 @@ public class Timbre {
         return obj;
     }
 
+    /**
+     * Retrieve a stamp from a JSON ObjectNode.
+     *
+     * @param json the json
+     * @return the stamp (Timbre)
+     */
     public static @Nullable Timbre fromJson(ObjectNode json) {
         ObjectMapper mapper = new ObjectMapper();
         Timbre timbre;
@@ -169,16 +240,39 @@ public class Timbre {
         return timbre;
     }
 
-    public static Timbre @Nullable [] fromJsonArray(ObjectNode json) {
-        ObjectMapper mapper = new ObjectMapper();
-        Timbre[] timbres;
-        try {
-            timbres = mapper.convertValue(json, Timbre[].class);
-        } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
-            return null;
-        }
-        return timbres;
+    /**
+     * Assign a stamp's data to another.
+     *
+     * @param timbre the timbre to copy from
+     */
+    public void assign(Timbre timbre) {
+        this.m_valeur = timbre.getValeur();
+        this.m_deviseValeur = timbre.getDeviseValeur();
+        this.m_filet = timbre.getFilet();
+        this.m_dentelure = timbre.getDentelure();
+        this.m_paysOrig = timbre.getPaysOrig();
+        this.m_oeuvre = timbre.getOeuvre();
+        this.m_designation = timbre.getDesignation();
+        this.m_signatureDessinateur = timbre.getSignatureDessinateur();
+        this.m_signatureGraveur = timbre.getSignatureGraveur();
+    }
+
+    /**
+     * Compares two stamps.
+     *
+     * @param timbre the stamp to be compared to
+     * @return true if they are equals, or else, false
+     */
+    public boolean equals(Timbre timbre) {
+        if (!Objects.equals(m_valeur, timbre.getValeur())) return false;
+        if (!Objects.equals(m_deviseValeur, timbre.getDeviseValeur())) return false;
+        if (!Objects.equals(m_filet, timbre.getFilet())) return false;
+        if (!Objects.equals(m_dentelure, timbre.getDentelure())) return false;
+        if (!Objects.equals(m_paysOrig, timbre.getPaysOrig())) return false;
+        if (!Objects.equals(m_oeuvre, timbre.getOeuvre())) return false;
+        if (!Objects.equals(m_designation, timbre.getDesignation())) return false;
+        if (!Objects.equals(m_signatureDessinateur, timbre.getSignatureDessinateur())) return false;
+        return Objects.equals(m_signatureGraveur, timbre.getSignatureGraveur());
     }
 
     @Override
@@ -195,5 +289,14 @@ public class Timbre {
         sb.append("signature du graveur :\t\t").append(m_signatureGraveur).append('\n');
         sb.append("*****************************************************************\n");
         return sb.toString();
+    }
+
+    @Override
+    public Timbre clone() {
+        try {
+            return (Timbre) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
