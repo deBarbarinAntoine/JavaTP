@@ -7,37 +7,36 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Timbre {
     @JsonProperty("valeur")
-    float m_valeur;
+    private Float m_valeur;
 
     @JsonProperty("devise_valeur")
-    String m_deviseValeur;
+    private String m_deviseValeur;
 
     @JsonProperty("filet")
-    boolean m_filet;
+    private Boolean m_filet;
 
     @JsonProperty("dentelure")
-    String m_dentelure;
+    private String m_dentelure;
 
     @JsonProperty("pays_orig")
-    String m_paysOrig;
+    private String m_paysOrig;
 
     @JsonProperty("oeuvre")
-    String m_oeuvre;
+    private String m_oeuvre;
 
     @JsonProperty("designation")
-    String m_designation;
+    private String m_designation;
 
     @JsonProperty("signature_dessinateur")
-    String m_signatureDessinateur;
+    private String m_signatureDessinateur;
 
     @JsonProperty("signature_graveur")
-    String m_signatureGraveur;
+    private String m_signatureGraveur;
 
     private Timbre(float valeur, String deviseValeur, boolean filet, String dentelure, String paysOrig, String oeuvre, String designation, String signatureDessinateur, String signatureGraveur) {
         m_valeur = valeur;
@@ -103,7 +102,42 @@ public class Timbre {
         objArray = utils.toJson(timbresFromJson);
 
         utils.writeFile("test.json", utils.jsonStringify(objArray), false);
+    }
 
+    public Boolean getFilet() {
+        return m_filet;
+    }
+
+    public Float getValeur() {
+        return m_valeur;
+    }
+
+    public String getDentelure() {
+        return m_dentelure;
+    }
+
+    public String getDesignation() {
+        return m_designation;
+    }
+
+    public String getDeviseValeur() {
+        return m_deviseValeur;
+    }
+
+    public String getOeuvre() {
+        return m_oeuvre;
+    }
+
+    public String getPaysOrig() {
+        return m_paysOrig;
+    }
+
+    public String getSignatureDessinateur() {
+        return m_signatureDessinateur;
+    }
+
+    public String getSignatureGraveur() {
+        return m_signatureGraveur;
     }
 
     public ObjectNode toJson() {

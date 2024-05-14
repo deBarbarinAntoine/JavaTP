@@ -1,5 +1,7 @@
 package TP.TP3.cardGame;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 /**
@@ -106,36 +108,31 @@ public class Deck implements Iterable<Card> {
         return output.toString();
     }
 
-    @Override
-    public Iterator<Card> iterator() {
-        return new DeckIterator(cards);
-    }
-
     /**
      * Implementing Iterable
      */
-    private class DeckIterator implements Iterator<Card> {
+    @Override
+    public @NotNull Iterator<Card> iterator() {
 
-        private final ArrayList<Card> cards;
-        private int currentIndex = 0;
+        return new Iterator<>() {
 
-        public DeckIterator(ArrayList<Card> cards) {
-            this.cards = cards;
-        }
+            private int currentIndex = 0;
 
-        @Override
-        public boolean hasNext() {
-            return currentIndex < cards.size();
-        }
-
-        @Override
-        public Card next() {
-            if (hasNext()) {
-                return cards.get(currentIndex++);
-            } else {
-                throw new NoSuchElementException("No more cards in the deck");
+            @Override
+            public boolean hasNext() {
+                return currentIndex < cards.size() && cards.get(currentIndex) != null;
             }
-        }
+
+            @Override
+            public Card next() {
+                return cards.get(currentIndex++);
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     /**
