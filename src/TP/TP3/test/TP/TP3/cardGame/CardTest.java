@@ -72,14 +72,17 @@ class CardTest {
     }
 
     /**
-     * Equal.
+     * Equals.
      */
     @Test
-    void equal() {
+    void equals() {
         Card card = Card.newCard("7", "HEARTS");
         Card card2 = Card.newCard("7", "HEARTS");
+        Assertions.assertNotNull(card);
+        Assertions.assertNotNull(card2);
         Assertions.assertEquals(card.getColor(), card2.getColor());
         Assertions.assertEquals(card.getValue(), card2.getValue());
+        Assertions.assertTrue(card.equals(card2));
     }
 
     /**
@@ -101,6 +104,7 @@ class CardTest {
         Assertions.assertNotNull(card2);
         Assertions.assertEquals(card.getColor(), card2.getColor());
         Assertions.assertEquals(card.getValue(), card2.getValue());
+        Assertions.assertTrue(card.equals(card2));
         Assertions.assertNotEquals(card, card2);
     }
 
@@ -111,10 +115,12 @@ class CardTest {
     void assign() {
         Card card = Card.newCard("J", "CLUBS");
         Card card2 = Card.newCard("3", "DIAMONDS");
-        card.assign(card2);
         Assertions.assertNotNull(card);
+        Assertions.assertNotNull(card2);
+        card.assign(card2);
         Assertions.assertEquals(card.getColor(), card2.getColor());
         Assertions.assertEquals(card.getValue(), card2.getValue());
+        Assertions.assertTrue(card.equals(card2));
         Assertions.assertNotEquals(card, card2);
     }
 

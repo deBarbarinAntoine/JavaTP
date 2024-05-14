@@ -75,7 +75,7 @@ class DeckTest {
         shuffledDeck.shuffle();
         boolean equals = true;
         for (int i = 0; i < deck.getCards().size(); ++i) {
-            equals = deck.getCards().get(i).equal(shuffledDeck.getCards().get(i));
+            equals = deck.getCards().get(i).equals(shuffledDeck.getCards().get(i));
             if (!equals) break;
         }
         Assertions.assertFalse(equals);
@@ -105,7 +105,7 @@ class DeckTest {
         Card drawnCard = deck.draw();
         Card card = Card.newCard("JOKER", "CLUBS");
         Assertions.assertNotNull(drawnCard);
-        Assertions.assertTrue(drawnCard.equal(card));
+        Assertions.assertTrue(drawnCard.equals(card));
         Assertions.assertEquals(53, deck.getCards().size());
 
         for (int i = 0; i < 53; ++i) {
@@ -114,6 +114,30 @@ class DeckTest {
 
         Assertions.assertTrue(deck.isEmpty());
         Assertions.assertNull(deck.draw());
+    }
+
+    /**
+     * Test equals.
+     */
+    @Test
+    void testEquals() {
+        Deck deck1 = Deck.newDeck();
+        Deck deck2 = Deck.newDeck();
+        Assertions.assertNotEquals(deck1, deck2);
+        Assertions.assertTrue(deck1.equals(deck2));
+    }
+
+    /**
+     * Test clone.
+     */
+    @Test
+    void testClone() {
+        Deck deck = Deck.newDeck();
+        Deck clone = deck.clone();
+        Assertions.assertNotNull(deck);
+        Assertions.assertNotNull(clone);
+        Assertions.assertNotEquals(deck, clone);
+        Assertions.assertTrue(deck.equals(clone));
     }
 
     /**
@@ -179,10 +203,5 @@ class DeckTest {
                 |___10|  |____J|  |____Q|  |____K|  |*___R|  |*___R| \s
                 """;
         Assertions.assertEquals(expected, deck.toString());
-    }
-
-    @Test
-    void testClone() {
-        
     }
 }

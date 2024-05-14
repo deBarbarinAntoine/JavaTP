@@ -80,6 +80,32 @@ public class Deck implements Iterable<Card>, Cloneable {
         System.out.println(deck);
     }
 
+    /**
+     * Checks if a Deck is equals to another.
+     *
+     * @param deck the deck to be compared to
+     * @return true or false
+     */
+    public boolean equals(Deck deck) {
+        if (this.getCards().size() != deck.getCards().size()) return false;
+        for (int i = 0; i < this.getCards().size(); ++i) {
+            if (!this.getCards().get(i).equals(deck.getCards().get(i))) return false;
+        }
+        return true;
+    }
+
+    /**
+     * Implementing Clonable
+     */
+    @Override
+    public Deck clone() {
+        try {
+            return (Deck) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
@@ -133,15 +159,6 @@ public class Deck implements Iterable<Card>, Cloneable {
                 throw new UnsupportedOperationException();
             }
         };
-    }
-
-    @Override
-    public Deck clone() {
-        try {
-            return (Deck) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 
     /**

@@ -19,11 +19,16 @@ class TimbreTest {
     void testEquals() {
         Timbre t1 = new Timbre(0.86f, "EUR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
         Timbre t2 = new Timbre(0.86f, "EUR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
-        Timbre t3 = new Timbre(5.80f, "FR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
+        Timbre t3 = new Timbre(2.2f, "AUD", false, "13", "Australie", "Kangourou roux", "Timbre d'usage courant", "Pro Hart", "Stan Smith");
         Assertions.assertNotNull(t1);
         Assertions.assertNotNull(t2);
         Assertions.assertNotNull(t3);
+        Assertions.assertNotEquals(t1, t2);
+        Assertions.assertNotEquals(t1, t3);
+        Assertions.assertNotEquals(t2, t3);
         Assertions.assertTrue(t1.equals(t2));
+        Assertions.assertTrue(t1.equals(t1));
+        Assertions.assertTrue(t2.equals(t2));
         Assertions.assertFalse(t1.equals(t3));
         Assertions.assertFalse(t2.equals(t3));
     }

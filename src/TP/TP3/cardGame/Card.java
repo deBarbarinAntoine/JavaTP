@@ -59,9 +59,8 @@ public class Card {
      */
     public void setValue(String value) {
         value = value.toUpperCase().trim();
-        if (!Deck.cardValues.valueOf(Deck.cardValues.labelToValue(value)).equals("")) {
-            this.m_value = value;
-        }
+        Deck.cardValues.valueOf(Deck.cardValues.labelToValue(value));
+        this.m_value = value;
     }
 
     /**
@@ -93,7 +92,7 @@ public class Card {
      * @param card the card you want to compare to
      * @return true or false according to the cards' value and color
      */
-    public boolean equal(Card card) {
+    public boolean equals(Card card) {
         return m_value.equals(card.m_value) && m_color.equals(card.m_color);
     }
 
