@@ -89,6 +89,39 @@ public class utils {
         return number;
     }
 
+    /**
+     * getStringInput takes a message to return a String.
+     *
+     * @param msg the message to display before taking the user's input.
+     * @param validInputs the required inputs, if there is none, put null.
+     * @return String found in the Scanner.
+     */
+    public static String getStringInput(String msg, ArrayList<String> validInputs) {
+
+        Scanner input = new Scanner(System.in);
+
+        boolean validInput;
+        String str;
+
+        if (validInputs != null) validInputs.replaceAll(String::toLowerCase);
+
+        do {
+            validInput = true;
+
+            System.out.println(msg);
+
+            str = input.nextLine();
+            str = str.trim();
+
+            if (validInputs != null && !validInputs.contains(str.toLowerCase())) {
+                validInput = false;
+            }
+
+        } while (!validInput);
+
+        return str;
+    }
+
     private static void checkFile(String filename) throws IOException {
         File file = new File(filename);
         if (!file.exists()) {

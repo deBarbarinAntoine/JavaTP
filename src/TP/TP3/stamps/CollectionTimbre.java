@@ -40,7 +40,7 @@ public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, C
         CollectionTimbre myCollection = newCollectionTimbre("test_stamp_collection.json");
         myCollection.sortBy(Sort.newSort("pays"), Sort.newSort("valeur", false));
         System.out.println(myCollection);
-        utils.writeFile("test_stamp_collection.json", utils.jsonStringify(myCollection.toJson()), false);
+        utils.writeFile("collection_timbres.json", utils.jsonStringify(myCollection.toJson()), false);
     }
 
     /**
@@ -63,7 +63,7 @@ public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, C
      *
      * @return a JSON ArrayNode
      */
-    private ArrayNode toJson() {
+    public ArrayNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode jsonArray = mapper.createArrayNode();
         for (Timbre timbre : this) {
