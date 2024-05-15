@@ -2,6 +2,7 @@ package TP.TP3;
 
 import TP.TP;
 import TP.TP3.cardGame.Deck;
+import TP.TP3.stamps.Timbre;
 
 /**
  * The type Tp 3.

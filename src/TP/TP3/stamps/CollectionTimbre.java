@@ -15,9 +15,9 @@ import java.util.*;
 public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, Cloneable {
 
     private final ArrayList<Timbre> m_timbres;
-    private Sort m_sorting;
+    private Sort m_sorting = Sort.newSort("valeur", false);
 
-    private CollectionTimbre(ArrayList<Timbre> timbres) {
+    CollectionTimbre(ArrayList<Timbre> timbres) {
         m_timbres = timbres;
     }
 
@@ -37,10 +37,10 @@ public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, C
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        CollectionTimbre myCollection = newCollectionTimbre("test.json");
+        CollectionTimbre myCollection = newCollectionTimbre("test_stamp_collection.json");
         myCollection.sortBy(Sort.newSort("pays"), Sort.newSort("valeur", false));
         System.out.println(myCollection);
-        utils.writeFile("test.json", utils.jsonStringify(myCollection.toJson()), false);
+        utils.writeFile("test_stamp_collection.json", utils.jsonStringify(myCollection.toJson()), false);
     }
 
     /**
@@ -82,6 +82,26 @@ public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, C
     }
 
     /**
+     * Gets the size of the stamp collection (collectionTimbre).
+     *
+     * @return the stamp collection's size
+     */
+    public int size() {
+        return m_timbres.size();
+    }
+
+    /**
+     * Gets a stamp from the stamp collection (collectionTimbre).
+     *
+     * @param index the index
+     * @return the timbre
+     */
+    public Timbre get(int index) {
+        if (index < 0 || index >= m_timbres.size()) return null;
+        return m_timbres.get(index);
+    }
+
+    /**
      * Add a stamp to the stamp collection (collectionTimbre).
      *
      * @param timbre the stamp (timbre)
@@ -90,17 +110,6 @@ public class CollectionTimbre implements Iterable<Timbre>, Comparator<Timbre>, C
     public CollectionTimbre add(Timbre timbre) {
         this.m_timbres.add(timbre);
         return this;
-    }
-
-    /**
-     * Select a stamp from the stamp collection (collectionTimbre).
-     *
-     * @param index the index
-     * @return the timbre
-     */
-    public Timbre select(int index) {
-        if (index < 0 || index >= m_timbres.size()) return null;
-        return m_timbres.get(index);
     }
 
     /**

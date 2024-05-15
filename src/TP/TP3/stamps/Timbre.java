@@ -63,7 +63,7 @@ public class Timbre implements Cloneable {
      * @return the stamp (Timbre)
      */
     public static Timbre newTimbre(String filename) {
-        return Timbre.fromJson(utils.readJSONFile("stamp.json"));
+        return Timbre.fromJson(utils.readJSONFile("test_stamp.json"));
     }
 
     /**
@@ -73,10 +73,10 @@ public class Timbre implements Cloneable {
      */
     public static void main(String[] args){
 
-        Timbre timbreTest = newTimbre("stamp.json");
-        utils.writeFile("test.json", utils.jsonStringify(timbreTest.toJson()), false);
+        Timbre timbreTest = newTimbre("test_stamp.json");
+        utils.writeFile("test_stamp_collection.json", utils.jsonStringify(timbreTest.toJson()), false);
 
-        ObjectNode obj = utils.readJSONFile("test.json");
+        ObjectNode obj = utils.readJSONFile("test_stamp_collection.json");
         String jsonStringify = utils.jsonStringify(obj);
 
         if (!jsonStringify.isEmpty()) {
@@ -104,9 +104,9 @@ public class Timbre implements Cloneable {
         System.out.println("objArray:\n");
         System.out.println(utils.jsonStringify(objArray));
 
-        utils.writeFile("test.json", utils.jsonStringify(objArray), false);
+        utils.writeFile("test_stamp_collection.json", utils.jsonStringify(objArray), false);
 
-        ArrayNode jsonArray = utils.readJSONArrayFile("test.json");
+        ArrayNode jsonArray = utils.readJSONArrayFile("test_stamp_collection.json");
         if (jsonArray == null) return;
 
         ObjectMapper mapper = new ObjectMapper();
@@ -116,7 +116,7 @@ public class Timbre implements Cloneable {
 
         objArray = utils.toJson(timbresFromJson);
 
-        utils.writeFile("test.json", utils.jsonStringify(objArray), false);
+        utils.writeFile("test_stamp_collection.json", utils.jsonStringify(objArray), false);
     }
 
     /**

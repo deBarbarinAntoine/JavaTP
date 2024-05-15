@@ -1,0 +1,167 @@
+[
+  {
+    "valeur": 0.25,
+    "devise_valeur": "USD",
+    "filet": true,
+    "dentelure": "14",
+    "pays_orig": "USA",
+    "oeuvre": "Liberty Bell",
+    "designation": "Forever Stamp",
+    "signature_dessinateur": "C. Saxon",
+    "signature_graveur": "Thomas Hiatt"
+  },
+  {
+    "valeur": 1.15,
+    "devise_valeur": "EUR",
+    "filet": false,
+    "dentelure": "13 ¼",
+    "pays_orig": "France",
+    "oeuvre": "Marianne",
+    "designation": "Marianne Definitif",
+    "signature_dessinateur": "Olivier Ciappa",
+    "signature_graveur": "Elsa Michelet"
+  },
+  {
+    "valeur": 8.00,
+    "devise_valeur": "JPY",
+    "filet": true,
+    "dentelure": "11",
+    "pays_orig": "Japon",
+    "oeuvre": "Mont Fuji",
+    "designation": "Série paysages",
+    "signature_dessinateur": "Katsushiro Kobayashi",
+    "signature_graveur": "Ryoichi Mori"
+  },
+  {
+    "valeur": 0.70,
+    "devise_valeur": "GBP",
+    "filet": false,
+    "dentelure": "14 ½",
+    "pays_orig": "Royaume-Uni",
+    "oeuvre": "Elizabeth II",
+    "designation": "Second Class",
+    "signature_dessinateur": "Arnold Machin",
+    "signature_graveur": "Timothy Bradbury"
+  },
+  {
+    "valeur": 3.00,
+    "devise_valeur": "AUD",
+    "filet": true,
+    "dentelure": "12 ¾",
+    "pays_orig": "Australie",
+    "oeuvre": "Koala",
+    "designation": "Commemoratif 2023",
+    "signature_dessinateur": "Stuart Devlin",
+    "signature_graveur": "Horst Friedrich"
+  },
+  {
+    "valeur": 0.49,
+    "devise_valeur": "CAD",
+    "filet": false,
+    "dentelure": "13",
+    "pays_orig": "Canada",
+    "oeuvre": "Feuille d'érable",
+    "designation": "Série Nature",
+    "signature_dessinateur": "Dennis W. Gies",
+    "signature_graveur": "Leonard Enright"
+  },
+  {
+    "valeur": 0.55,
+    "devise_valeur": "CHF",
+    "filet": true,
+    "dentelure": "14 ¼",
+    "pays_orig": "Suisse",
+    "oeuvre": "Le Cervin",
+    "designation": "Paysages de montagne",
+    "signature_dessinateur": "Urs Wehrli",
+    "signature_graveur": "Robert Bretscher"
+  },
+  {
+    "valeur": 1.20,
+    "devise_valeur": "NZD",
+    "filet": false,
+    "dentelure": "12 ½",
+    "pays_orig": "Nouvelle-Zélande",
+    "oeuvre": "Fougère argentée",
+    "designation": "Flore indigène",
+    "signature_dessinateur": "Colin Heldige",
+    "signature_graveur": "Simon Hollis"
+  },
+  {
+    "valeur": 0.60,
+    "devise_valeur": "SEK",
+    "filet": true,
+    "dentelure": "13 ¾",
+    "pays_orig": "Suède",
+    "oeuvre": "Le Vasa",
+    "designation": "Navires historiques",
+    "signature_dessinateur": "Lars Sjöberg",
+    "signature_graveur": "Britta Nordin"
+  },
+  {
+    "valeur": 2.50,
+    "devise_valeur": "BRL",
+    "filet": false,
+    "dentelure": "14",
+    "pays_orig": "Brésil",
+    "oeuvre": "Christ Rédempteur",
+    "designation": "Monuments célèbres",
+    "signature_dessinateur": "Oscar Oiwa",
+    "signature_graveur": "Manoel de Barros"
+  },
+  {
+    "valeur": 0.49,
+    "devise_valeur": "USD",
+    "filet": false,
+    "dentelure": "13",
+    "pays_orig": "USA",
+    "oeuvre": "Statue de la Liberté",
+    "designation": "Timbre commémoratif du centenaire",
+    "signature_dessinateur": "Edwin Blashfield",
+    "signature_graveur": "Charles R. Chickering"
+  },
+  {
+    "valeur": 0.86,
+    "devise_valeur": "EUR",
+    "filet": true,
+    "dentelure": "14 ¼",
+    "pays_orig": "France",
+    "oeuvre": "Sembrador",
+    "designation": "Timbre d'usage courant",
+    "signature_dessinateur": "Oscar Roty",
+    "signature_graveur": "Louis-Eugène Mouchon"
+  },
+  {
+    "valeur": 150.00,
+    "devise_valeur": "JPY",
+    "filet": false,
+    "dentelure": "10",
+    "pays_orig": "Japon",
+    "oeuvre": "Grues japonaises en vol",
+    "designation": "Timbre commémoratif du Nouvel An",
+    "signature_dessinateur": "Shinzo Nakaba",
+    "signature_graveur": "Takashi Imai"
+  },
+  {
+    "valeur": 1.50,
+    "devise_valeur": "GBP",
+    "filet": true,
+    "dentelure": "15",
+    "pays_orig": "Royaume-Uni",
+    "oeuvre": "Le Lion et la Couronne",
+    "designation": "Timbre commémoratif du Jubilé de platine",
+    "signature_dessinateur": "J.E. Blakey",
+    "signature_graveur": "Robert Austin"
+  },
+  {
+    "valeur": 2.20,
+    "devise_valeur": "AUD",
+    "filet": false,
+    "dentelure": "13",
+    "pays_orig": "Australie",
+    "oeuvre": "Kangourou roux",
+    "designation": "Timbre d'usage courant",
+    "signature_dessinateur": "Pro Hart",
+    "signature_graveur": "Stan Smith"
+  }
+]

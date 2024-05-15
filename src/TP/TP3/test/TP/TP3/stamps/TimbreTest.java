@@ -38,7 +38,7 @@ class TimbreTest {
      */
     @Test
     void newTimbre() {
-        Timbre t1 = Timbre.newTimbre("stamp.json");
+        Timbre t1 = Timbre.newTimbre("test_stamp.json");
         Timbre t2 = new Timbre(0.86f, "EUR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
         Assertions.assertNotNull(t1);
         Assertions.assertNotNull(t2);
@@ -140,7 +140,7 @@ class TimbreTest {
      */
     @Test
     void toJson() {
-        ObjectNode obj1 = utils.readJSONFile("stamp.json");
+        ObjectNode obj1 = utils.readJSONFile("test_stamp.json");
         Timbre t1 = new Timbre(0.86f, "EUR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
         Assertions.assertNotNull(t1.toJson());
         Assertions.assertNotNull(obj1);
@@ -155,7 +155,7 @@ class TimbreTest {
      */
     @Test
     void fromJson() {
-        ObjectNode obj1 = utils.readJSONFile("stamp.json");
+        ObjectNode obj1 = utils.readJSONFile("test_stamp.json");
         Timbre t1 = new Timbre(0.86f, "EUR", true, "14 ¼", "France", "Sembrador", "Timbre d'usage courant", "Oscar Roty", "Louis-Eugène Mouchon");
         Assertions.assertNotNull(obj1);
         Assertions.assertNotNull(t1);

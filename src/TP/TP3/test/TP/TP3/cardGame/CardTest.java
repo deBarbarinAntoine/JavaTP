@@ -16,6 +16,7 @@ class CardTest {
     @Test
     void getValue() {
         Card card = Card.newCard("A", "SPADES");
+        Assertions.assertNotNull(card);
         Assertions.assertEquals("A", card.getValue());
     }
 
